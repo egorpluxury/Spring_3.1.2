@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.kata.spring.boot_security.demo.configs.WebSecurityConfig;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.repository.UserRepository;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
     private final UserRepository userRepository;
 
     @Autowired
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    @Transactional(readOnly = true)
+
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
@@ -34,13 +35,11 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    @Transactional(readOnly = true)
     @Override
     public User showUserById(int id) {
         Optional<User> userById=userRepository.findById(id);

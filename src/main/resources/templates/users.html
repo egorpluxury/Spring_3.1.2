@@ -27,7 +27,8 @@
         <td th:text="${user.getName()}"/>
         <td th:text="${user.getLastName()}"/>
         <td th:text="${user.getAge()}"/>
-        <td th:text="${user.getRoles()}"/>
+        <td> <span th:each="role:${user.getRoles()}"
+        th:text="${role.getName().replace('ROLE_','')+' '}"></span> </td>
         <td>
             <form th:method="GET" th:action="@{/admin/{id}/edit (id=${user.getId()})}" th:object="${user}">
                 <input type="submit" value="EDIT">
@@ -42,6 +43,9 @@
     </tbody>
 </table>
 <br>
+<form th:method="GET" th:action="@{/user}">
+    <input type="submit" value="INFO">
+</form>
 <form th:method="GET" th:action="@{/admin/new}">
     <input type="submit" value="ADD USER">
 </form>
