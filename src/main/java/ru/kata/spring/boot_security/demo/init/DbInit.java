@@ -28,11 +28,11 @@ public class DbInit implements ApplicationListener<ContextRefreshedEvent> {
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        Role userRole=new Role();
+        Role userRole = new Role();
         userRole.setName("ROLE_USER");
         roleRepository.save(userRole);
 
-        Role adminRole=new Role();
+        Role adminRole = new Role();
         adminRole.setName("ROLE_ADMIN");
         roleRepository.save(adminRole);
 

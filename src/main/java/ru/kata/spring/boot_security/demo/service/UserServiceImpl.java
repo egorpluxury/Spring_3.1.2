@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void deleteUserById(int id) {
-        if (userRepository.existsById(id)){
+        if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
         } else {
             throw new UsernameNotFoundException("User not found");
