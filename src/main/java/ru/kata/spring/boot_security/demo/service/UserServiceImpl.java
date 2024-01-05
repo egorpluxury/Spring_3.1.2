@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
             updateUser.setPassword(passwordEncoder.encode(updateUser.getPassword()));
             userRepository.save(updateUser);
         } else {
-            throw new UsernameNotFoundException("User not found");
+            throw new EntityNotFoundException("User not found");
         }
     }
 
@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
         if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
         } else {
-            throw new UsernameNotFoundException("User not found");
+            throw new EntityNotFoundException("User not found");
         }
     }
 }
