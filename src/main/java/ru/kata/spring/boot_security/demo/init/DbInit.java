@@ -14,13 +14,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
-public class dbInit implements ApplicationListener<ContextRefreshedEvent> {
+public class DbInit implements ApplicationListener<ContextRefreshedEvent> {
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public dbInit(RoleRepository roleRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public DbInit(RoleRepository roleRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
